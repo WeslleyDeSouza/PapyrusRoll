@@ -11,6 +11,7 @@ export const appRoutes: Route[] = [
   {
     path: 'uiAuth',
     loadChildren: () => import('uiAuth/Routes').then((m) => m!.remoteRoutes),
+    canActivate: [AUTH_GUARD.isLoggedOutUser],
   },
   {
     path: '**',

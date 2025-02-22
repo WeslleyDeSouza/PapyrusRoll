@@ -2,7 +2,9 @@
   "name": "@wes/papyrusroll",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "graph:build": "nx graph --groupByFolder --file=graph.json"
+  },
   "private": true,
   "devDependencies": {
     "@angular-devkit/build-angular": "~19.1.0",

@@ -10,4 +10,9 @@ export namespace AUTH_GUARD {
   };
 
   export const isLoggedInTenant = () => undefined;
+
+  export const isLoggedOutUser = () => {
+    const router = inject(Router);
+    return !isLoggedInUser() || router.navigate(['/']);
+  };
 }
