@@ -1,10 +1,10 @@
 <div>
-  <lib-header/>
+  <lib-header />
   <div class="d-grid" [class.d-grid--authenticated]="isAuthenticated()">
     <div>
       @if(isAuthenticated()){
       <lib-sidebar>
-        <ng-content select="[sideBar]"/>
+        <ng-content select="[sideBar]" />
       </lib-sidebar>
       }
     </div>
@@ -13,6 +13,5 @@
     </div>
     <div></div>
   </div>
-  <lib-footer/>
+  <lib-footer />
 </div>
-

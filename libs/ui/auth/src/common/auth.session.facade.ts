@@ -1,5 +1,6 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { AuthSessionStore } from './';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 interface ISession {
   user: {};
@@ -17,13 +18,16 @@ export class AuthSessionFacade {
    * Event emitter that broadcasts authentication state changes.
    * Emits true when user is logged in, false otherwise.
    */
-  readonly stateChange$: EventEmitter<boolean> = new EventEmitter();
+  readonly state$: BehaviorSubject<boolean> = new BehaviorSubject(false);
+  readonly stateChange$: Observable<boolean> = this.state$.asObservable();
 
   /**
    * Creates an instance of AuthSessionFacade.
    * @param store - The authentication session store service
    */
-  constructor(protected store: AuthSessionStore) {}
+  constructor(protected store: AuthSessionStore) {
+    this.autoLoader();
+  }
 
   /**
    * Checks if the user is currently logged in.
@@ -39,7 +43,7 @@ export class AuthSessionFacade {
    */
   sessionSet(session: Partial<ISession>): void {
     this.store.session = session;
-    this.stateChange$.emit(this.isLoggedIn);
+    this.state$.next(this.isLoggedIn);
     sessionStorage.setItem('app.session', '1');
   }
 
@@ -49,5 +53,14 @@ export class AuthSessionFacade {
    */
   sessionGet(): Partial<ISession> | undefined {
     return this.store.session;
+  }
+
+  private autoLoader() {
+    // simple loader
+    let session = sessionStorage.getItem('app.session')
+      ? {}
+      : (undefined as any as ISession);
+
+    if (session) this.sessionSet(session);
   }
 }

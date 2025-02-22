@@ -5,9 +5,9 @@ import { CommonModule } from '@angular/common';
   selector: 'lib-footer',
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.css',
-  standalone:true,
-  host:{
-    class:'w-100'
-  }
+  standalone: true,
+  host: {
+    class: 'w-100',
+  },
 })
 export class FooterComponent {}

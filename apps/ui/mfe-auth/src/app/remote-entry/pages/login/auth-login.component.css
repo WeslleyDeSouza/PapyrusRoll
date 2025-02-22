@@ -1,8 +1,7 @@
-
-   :host {
-     display: block;
-     background-color: #fff;
-   }
+:host {
+  display: block;
+  background-color: #fff;
+}
 
 .logo {
   width: 40px;
