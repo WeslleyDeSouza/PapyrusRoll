@@ -18,6 +18,7 @@ flowchart TD
     classDef service fill:#444,stroke:#fff,stroke-width:1px,color:#fff
     classDef db fill:#777,stroke:#fff,stroke-width:1px,color:#fff
     classDef proxy fill:#999,stroke:#fff,stroke-width:1px,color:#fff
+    classDef lib fill:#5a5a5a,stroke:#fff,stroke-width:1px,color:#fff
     classDef e2e fill:#555,stroke:#fff,stroke-width:1px,color:#fff
 
 %% Defining Entities
@@ -26,6 +27,12 @@ flowchart TD
         uiShell["UI Shell"]:::service
         uiDoc["UI Documents"]:::service
         uiAuth["UI Auth"]:::service
+    end
+
+    subgraph "Frontend Libraries"
+        direction TB
+        core["Core Library"]:::lib
+        auth["Auth Library"]:::lib
     end
 
     subgraph "Backend Services"
@@ -65,6 +72,7 @@ flowchart TD
     uiShell --> core
     uiShell --> uiDoc
     uiShell --> uiAuth
+    uiAuth --> auth
 
     core --> auth
 
