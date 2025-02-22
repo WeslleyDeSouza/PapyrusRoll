@@ -1,9 +1,9 @@
 {
-  "name": "apiDoc",
+  "name": "apiNotify",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/api/ms-document/src",
+  "sourceRoot": "apps/api/ms-notify/src",
   "projectType": "application",
-  "implicitDependencies": ["apiLog","apiNotify"],
+  "implicitDependencies": ["apiLog"],
   "tags": [],
   "targets": {
     "build": {
@@ -23,15 +23,15 @@
       "defaultConfiguration": "development",
       "dependsOn": ["build"],
       "options": {
-        "buildTarget": "apiDoc:build",
+        "buildTarget": "apiNotify:build",
         "runBuildTargetDependencies": false
       },
       "configurations": {
         "development": {
-          "buildTarget": "apiDoc:build:development"
+          "buildTarget": "apiNotify:build:development"
         },
         "production": {
-          "buildTarget": "apiDoc:build:production"
+          "buildTarget": "apiNotify:build:production"
         }
       }
     },

@@ -22,7 +22,8 @@
       ],
       "uiDoc/Routes": [
         "apps/ui/mfe-document/src/app/remote-entry/entry.routes.ts"
-      ]
+      ],
+      "uiLog/Routes": ["apps/ui/mfe-log/src/app/remote-entry/entry.routes.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

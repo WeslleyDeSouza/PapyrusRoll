@@ -4,6 +4,10 @@ import { AUTH_GUARD } from '@wes/auth';
 
 export const appRoutes: Route[] = [
   {
+    path: 'uiLog',
+    loadChildren: () => import('uiLog/Routes').then((m) => m!.remoteRoutes),
+  },
+  {
     path: 'uiDoc',
     loadChildren: () => import('uiDoc/Routes').then((m) => m!.remoteRoutes),
     canActivate: [AUTH_GUARD.isLoggedInUser],

@@ -1,9 +1,8 @@
 {
-  "name": "apiDoc",
+  "name": "apiLog",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/api/ms-document/src",
+  "sourceRoot": "apps/api/ms-log/src",
   "projectType": "application",
-  "implicitDependencies": ["apiLog","apiNotify"],
   "tags": [],
   "targets": {
     "build": {
@@ -23,15 +22,15 @@
       "defaultConfiguration": "development",
       "dependsOn": ["build"],
       "options": {
-        "buildTarget": "apiDoc:build",
+        "buildTarget": "apiLog:build",
         "runBuildTargetDependencies": false
       },
       "configurations": {
         "development": {
-          "buildTarget": "apiDoc:build:development"
+          "buildTarget": "apiLog:build:development"
         },
         "production": {
-          "buildTarget": "apiDoc:build:production"
+          "buildTarget": "apiLog:build:production"
         }
       }
     },

@@ -3,6 +3,7 @@
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/api/ms-shell/src",
   "projectType": "application",
+  "implicitDependencies": ["apiLog"],
   "tags": [],
   "targets": {
     "build": {

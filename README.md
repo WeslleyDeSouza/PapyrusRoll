@@ -20,6 +20,7 @@ flowchart TD
     classDef proxy fill:#999,stroke:#fff,stroke-width:1px,color:#fff
     classDef lib fill:#5a5a5a,stroke:#fff,stroke-width:1px,color:#fff
     classDef e2e fill:#555,stroke:#fff,stroke-width:1px,color:#fff
+    classDef queue fill:#444,stroke:#ffcc00,stroke-width:2px,color:#fff
 
 %% Defining Entities
     subgraph "Frontend Services"
@@ -27,6 +28,7 @@ flowchart TD
         uiShell["UI Shell"]:::service
         uiDoc["UI Documents"]:::service
         uiAuth["UI Auth"]:::service
+        uiLog["UI Log"]:::service
     end
 
     subgraph "Frontend Libraries"
@@ -40,10 +42,19 @@ flowchart TD
         apiShell["API Shell"]:::service
         apiDoc["API Documents"]:::service
         apiAuth["API Auth"]:::service
+        apiLog["API Log"]:::service
+        apiNotify["API Notify"]:::queue
+
         subgraph "Databases"
             mysqlAuth["MySQL - Auth"]:::db
             mysqlDoc["MySQL - Documents"]:::db
+            mongoLog["MongoDB - Logs"]:::db
         end
+    end
+
+    subgraph "Event System"
+        direction TB
+        rabbitmq["RabbitMQ"]:::queue
     end
 
     nginx["Nginx Proxy"]:::proxy
@@ -52,24 +63,36 @@ flowchart TD
         direction TB
         apiDocE2E["apiDoc-e2e"]:::e2e
         apiAuthE2E["apiAuth-e2e"]:::e2e
+        apiNotifyE2E["apiNotify-e2e"]:::e2e
         uiDocE2E["uiDoc-e2e"]:::e2e
         uiAuthE2E["uiAuth-e2e"]:::e2e
+        apiLogE2E["apiLog-e2e"]:::e2e
+        uiLogE2E["uiLog-e2e"]:::e2e
     end
 
 %% Defining Dependencies
     uiShell -->|HTTP| nginx
     uiDoc -->|HTTP| nginx
     uiAuth -->|HTTP| nginx
+    uiLog -->|HTTP| nginx
 
     nginx -->|HTTP| apiShell
     nginx -->|HTTP| apiDoc
     nginx -->|HTTP| apiAuth
+    nginx -->|HTTP| apiLog
 
     apiAuth -->|Stores Data| mysqlAuth
     apiDoc -->|Stores Data| mysqlDoc
+    apiLog -->|Stores Data| mongoLog
+
+    rabbitmq -->|AMQP| apiNotify
+    rabbitmq -->|AMQP| apiDoc
+    rabbitmq -->|AMQP| apiAuth
+    rabbitmq -->|AMQP| apiLog
 
     uiAuth --> auth
     uiShell --> core
+    uiShell --> uiLog
     uiShell --> uiDoc
     uiShell --> uiAuth
     uiAuth --> auth
@@ -78,9 +101,12 @@ flowchart TD
 
     apiDocE2E -->|Tests| apiDoc
     apiAuthE2E -->|Tests| apiAuth
+    apiNotifyE2E -->|Tests| apiNotify
     uiDocE2E -->|Tests| uiDoc
     uiAuthE2E -->|Tests| uiAuth
- 
+    apiLogE2E -->|Tests| apiLog
+    uiLogE2E -->|Tests| uiLog
+
 ```
 
 ### Getting started
