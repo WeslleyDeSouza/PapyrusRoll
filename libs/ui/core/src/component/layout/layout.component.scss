@@ -1,10 +1,14 @@
 .d-grid{
+  transition: grid-auto-columns, gap 0.5s ease-in-out;
+  :not(&--authenticated){
+    grid-template-columns: 0% 100% 0%;
+    gap: 0px;
+  }
   &--authenticated{
     display: grid;
     grid-template-columns: 20% calc(80% - 20px) 0.1%; /* -20 because of the gab */
     gap: 20px;
   }
-
 }
 .pyrl-content{
   height: 100vmin;

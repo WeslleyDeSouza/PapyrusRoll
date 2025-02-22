@@ -1,7 +1,17 @@
 import { ModuleFederationConfig } from '@nx/module-federation';
-
 const config: ModuleFederationConfig = {
   name: 'uiShell',
+  shared: (libraryName, sharedConfig) => {
+    if (libraryName?.includes('@wes')) {
+      return {
+        singleton: true,
+        strictVersion: true,
+        requiredVersion: 'auto',
+      };
+    }
+    return sharedConfig;
+  },
+
   /**
    * To use a remote that does not exist in your current Nx Workspace
    * You can use the tuple-syntax to define your remote

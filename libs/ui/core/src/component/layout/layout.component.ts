@@ -40,5 +40,10 @@ export class LayoutComponent {
     authEvent?.stateChange$
       ?.pipe(takeUntilDestroyed())
       .subscribe((sessionState) => this.isAuthenticated.set(!!sessionState));
+
+    console.log(authEvent);
+    console.log(
+      authEvent.stateChange$.subscribe((ev) => console.log('ev', ev))
+    );
   }
 }

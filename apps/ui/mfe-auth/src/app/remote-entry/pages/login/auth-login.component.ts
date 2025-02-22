@@ -33,7 +33,6 @@ export class AuthLoginComponent {
     if (!this.signInForm.valid) return;
 
     this.auth.sessionSet({});
-    console.log('Form submitted:', this.signInForm.value);
 
     this.router.navigate(['/']);
   }

@@ -5,6 +5,16 @@ const config: ModuleFederationConfig = {
   exposes: {
     './Routes': 'apps/ui/mfe-auth/src/app/remote-entry/entry.routes.ts',
   },
+  shared: (libraryName, sharedConfig) => {
+    if (libraryName?.includes('@wes')) {
+      return {
+        singleton: true,
+        strictVersion: true,
+        requiredVersion: 'auto',
+      };
+    }
+    return sharedConfig;
+  },
 };
 
 /**

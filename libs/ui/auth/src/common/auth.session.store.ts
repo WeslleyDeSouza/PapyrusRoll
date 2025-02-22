@@ -1,4 +1,4 @@
-import { EventEmitter, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 
 interface ISession {
   user: {};
@@ -9,23 +9,16 @@ interface ISession {
 })
 export class AuthSessionStore {
   session!: Partial<ISession>;
-  constructor() {}
-}
 
-@Injectable({
-  providedIn: 'root',
-})
-export class AuthSessionFacade {
-  readonly stateChange$: EventEmitter<boolean> = new EventEmitter();
-
-  constructor(protected store: AuthSessionStore) {}
-
-  sessionSet(session: Partial<ISession>) {
-    this.store.session = session;
-    this.stateChange$.emit(!!this.sessionGet());
+  constructor() {
+    this.autoLoader();
   }
 
-  sessionGet() {
-    return this.store.session;
+  // todo replace autoLoader with a real implementation
+  private autoLoader() {
+    // simple loader
+    this.session = sessionStorage.getItem('app.session')
+      ? {}
+      : (undefined as any as ISession);
   }
 }
