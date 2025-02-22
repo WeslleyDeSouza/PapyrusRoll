@@ -1,10 +1,11 @@
 {
-  "name": "uiShell",
+  "name": "ui-shell",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "prefix": "pyrl",
   "sourceRoot": "apps/ui/shell/src",
   "tags": [],
+  "implicitDependencies": ["apiShell"],
   "targets": {
     "build": {
       "executor": "@nx/angular:webpack-browser",
@@ -62,7 +63,8 @@
       "executor": "@nx/angular:module-federation-dev-server",
       "options": {
         "port": 4200,
-        "publicHost": "http://localhost:4200"
+        "publicHost": "http://localhost:4200",
+        "proxyConfig": "apps/ui/shell/proxy.conf.json"
       },
       "configurations": {
         "production": {
