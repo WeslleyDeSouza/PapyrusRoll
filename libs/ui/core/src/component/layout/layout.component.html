@@ -1,0 +1,30 @@
+<div>
+  <lib-header/>
+  <div class="d-grid" [class.d-grid--authenticated]="isAuthenticated()">
+    @if(isAuthenticated()){
+      <ng-container [ngTemplateOutlet]="contentAuthenticated"></ng-container>
+    } @else {
+      <ng-container [ngTemplateOutlet]="contentNonAuthenticated"></ng-container>
+    }
+  </div>
+  <lib-footer/>
+
+</div>
+
+<ng-template #contentAuthenticated>
+  <div>
+    <lib-sidebar>
+      <ng-content select="[sideBar]"/>
+    </lib-sidebar>
+  </div>
+  <div class="pyrl-content">
+    <ng-content></ng-content>
+  </div>
+  <div></div>
+</ng-template>
+
+<ng-template #contentNonAuthenticated>
+  <div class="pyrl-content">
+    <ng-content></ng-content>
+  </div>
+</ng-template>

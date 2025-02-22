@@ -5,7 +5,6 @@
   "prefix": "pyrl",
   "sourceRoot": "apps/ui/mfe-document/src",
   "tags": [],
-  "implicitDependencies": ["apiDoc"],
   "targets": {
     "build": {
       "executor": "@nx/angular:webpack-browser",

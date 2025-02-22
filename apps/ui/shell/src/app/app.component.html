@@ -1,6 +1,11 @@
-<ul class="remote-menu">
-  <li><a routerLink="/">Home</a></li>
-  <li><a routerLink="uiAuth">UiAuth</a></li>
-  <li><a routerLink="uiDoc">UiDoc</a></li>
-</ul>
-<router-outlet></router-outlet>
+
+
+<lib-layout>
+    <ng-container sideBar>
+            <li class="nav-item"><a class="nav-link link-dark" routerLink="/">Home</a></li>
+            <li class="nav-item"><a class="nav-link link-dark" routerLink="uiAuth">UiAuth</a></li>
+            <li class="nav-item"><a class="nav-link link-dark" routerLink="uiDoc">UiDoc</a></li>
+    </ng-container>
+    <router-outlet></router-outlet>
+</lib-layout>
+

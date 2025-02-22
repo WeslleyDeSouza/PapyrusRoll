@@ -11,7 +11,7 @@ export const appRoutes: Route[] = [
     loadChildren: () => import('uiAuth/Routes').then((m) => m!.remoteRoutes),
   },
   {
-    path: '',
+    path: '**',
     component: NxWelcomeComponent,
   },
 ];

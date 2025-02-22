@@ -1,0 +1,90 @@
+<div class="container">
+  <div class="row min-vh-100 justify-content-center align-items-center">
+    <div class="col-12 col-md-6">
+      <div class="card mx-auto">
+        <div class="card-body text-center">
+          <!-- Logo -->
+          <img src="assets/images/logo.png" alt="Logo" class="logo" />
+
+          <h2 class="mb-3">Sign In</h2>
+          <p class="text-muted mb-4">
+            New to PapyrusRol
+            <a href="#" class="text-success text-decoration-none">Sign Up</a>
+          </p>
+
+          <!-- Login Form -->
+          <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+              <input
+                type="email"
+                class="form-control"
+                placeholder="Enter your Email"
+                formControlName="email"
+                [ngClass]="{
+                  'is-invalid':
+                    signInForm.get('email')?.touched &&
+                    signInForm.get('email')?.invalid
+                }"
+              />
+              @if(signInForm.get('email')?.touched &&
+              signInForm.get('email')?.invalid){
+              <div class="invalid-feedback text-start">
+                Please enter a valid email address
+              </div>
+              }
+            </div>
+
+            <div class="mb-3 password-field">
+              <input
+                [type]="showPassword ? 'text' : 'password'"
+                class="form-control"
+                placeholder="Enter your password"
+                formControlName="password"
+                [ngClass]="{
+                  'is-invalid':
+                    signInForm.get('password')?.touched &&
+                    signInForm.get('password')?.invalid
+                }"
+              />
+              <span
+                class="password-toggle d-none"
+                (click)="onTogglePasswordVisibility()"
+              >
+                {{ showPassword ? 'visibility' : 'visibility_off' }}
+              </span>
+              @if(signInForm.get('password')?.touched &&
+              signInForm.get('password')?.invalid){
+              <div class="invalid-feedback text-start">
+                Password is required
+              </div>
+              }
+            </div>
+
+            <div class="mb-4 text-start">
+              <a routerLink="password-reset" class="text-decoration-none text-muted">
+                Forgot Password
+              </a>
+            </div>
+
+            <button
+              type="submit"
+              class="btn btn-signin text-white"
+              [disabled]="signInForm.invalid"
+            >
+              Sign In
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Language Selector -->
+  <div class="language-selector">
+    <button class="btn btn-link text-dark text-decoration-none">
+      <i class="material-icons align-middle">language</i>
+      English (United States)
+      <i class="material-icons align-middle">expand_more</i>
+    </button>
+  </div>
+</div>

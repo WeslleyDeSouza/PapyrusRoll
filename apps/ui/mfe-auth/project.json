@@ -5,7 +5,6 @@
   "prefix": "pyrl",
   "sourceRoot": "apps/ui/mfe-auth/src",
   "tags": [],
-  "implicitDependencies": ["apiAuth"],
   "targets": {
     "build": {
       "executor": "@nx/angular:webpack-browser",

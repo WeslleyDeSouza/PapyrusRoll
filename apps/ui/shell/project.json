@@ -1,11 +1,10 @@
 {
-  "name": "ui-shell",
+  "name": "uiShell",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "prefix": "pyrl",
   "sourceRoot": "apps/ui/shell/src",
   "tags": [],
-  "implicitDependencies": ["apiShell"],
   "targets": {
     "build": {
       "executor": "@nx/angular:webpack-browser",

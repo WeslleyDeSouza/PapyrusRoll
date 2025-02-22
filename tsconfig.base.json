@@ -8,13 +8,15 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
-    "target": "es2022",
+    "target": "es2020",
     "module": "esnext",
     "lib": ["es2020", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@wes/auth": ["libs/ui/auth/src/index.ts"],
+      "@wes/core": ["libs/ui/core/src/index.ts"],
       "uiAuth/Routes": [
         "apps/ui/mfe-auth/src/app/remote-entry/entry.routes.ts"
       ],

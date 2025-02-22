@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NxWelcomeComponent } from './nx-welcome.component';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
-  imports: [CommonModule, NxWelcomeComponent],
-  selector: 'pyrl-uiAuth-entry',
-  template: `<pyrl-nx-welcome></pyrl-nx-welcome>`,
+  imports: [CommonModule, RouterOutlet],
+  selector: 'pyrl-auth-entry',
+  template: `<router-outlet />`,
 })
-export class RemoteEntryComponent {}
+export class RemoteEntryAuthComponent {}
