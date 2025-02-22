@@ -1,8 +1,8 @@
 export default {
-  displayName: 'uiAuth',
+  displayName: 'uiDoc',
   preset: '../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-  coverageDirectory: '../../../coverage/apps/ui/mfe-auth',
+  coverageDirectory: '../../../coverage/apps/ui/mfe-document',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',

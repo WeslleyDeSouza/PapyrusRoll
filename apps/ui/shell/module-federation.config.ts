@@ -1,7 +1,7 @@
 import { ModuleFederationConfig } from '@nx/module-federation';
 
 const config: ModuleFederationConfig = {
-  name: 'shell',
+  name: 'uiShell',
   /**
    * To use a remote that does not exist in your current Nx Workspace
    * You can use the tuple-syntax to define your remote
@@ -14,7 +14,7 @@ const config: ModuleFederationConfig = {
    * declare module 'my-external-remote';
    *
    */
-  remotes: ['mfeAuth'],
+  remotes: ['uiAuth', 'uiDoc'],
 };
 
 /**

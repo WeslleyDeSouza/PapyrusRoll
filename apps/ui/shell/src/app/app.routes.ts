@@ -3,8 +3,12 @@ import { Route } from '@angular/router';
 
 export const appRoutes: Route[] = [
   {
-    path: 'mfeAuth',
-    loadChildren: () => import('mfeAuth/Routes').then((m) => m!.remoteRoutes),
+    path: 'uiDoc',
+    loadChildren: () => import('uiDoc/Routes').then((m) => m!.remoteRoutes),
+  },
+  {
+    path: 'uiAuth',
+    loadChildren: () => import('uiAuth/Routes').then((m) => m!.remoteRoutes),
   },
   {
     path: '',

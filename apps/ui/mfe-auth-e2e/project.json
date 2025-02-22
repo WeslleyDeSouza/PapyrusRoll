@@ -1,9 +1,9 @@
 {
-  "name": "mfeAuth-e2e",
+  "name": "uiAuth-e2e",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "sourceRoot": "apps/ui/mfe-auth-e2e/src",
-  "implicitDependencies": ["mfeAuth"],
-  "// targets": "to see all targets run: nx show project mfeAuth-e2e --web",
+  "implicitDependencies": ["uiAuth"],
+  "// targets": "to see all targets run: nx show project uiAuth-e2e --web",
   "targets": {}
 }

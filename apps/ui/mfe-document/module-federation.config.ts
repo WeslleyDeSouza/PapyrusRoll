@@ -1,9 +1,9 @@
 import { ModuleFederationConfig } from '@nx/module-federation';
 
 const config: ModuleFederationConfig = {
-  name: 'uiAuth',
+  name: 'uiDoc',
   exposes: {
-    './Routes': 'apps/ui/mfe-auth/src/app/remote-entry/entry.routes.ts',
+    './Routes': 'apps/ui/mfe-document/src/app/remote-entry/entry.routes.ts',
   },
 };
 

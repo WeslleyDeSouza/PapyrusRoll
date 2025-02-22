@@ -1,31 +1,31 @@
 {
-  "name": "uiShell",
+  "name": "uiDoc",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "prefix": "pyrl",
-  "sourceRoot": "apps/ui/shell/src",
+  "sourceRoot": "apps/ui/mfe-document/src",
   "tags": [],
   "targets": {
     "build": {
       "executor": "@nx/angular:webpack-browser",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/apps/ui/shell",
-        "index": "apps/ui/shell/src/index.html",
-        "main": "apps/ui/shell/src/main.ts",
+        "outputPath": "dist/apps/ui/mfe-document",
+        "index": "apps/ui/mfe-document/src/index.html",
+        "main": "apps/ui/mfe-document/src/main.ts",
         "polyfills": ["zone.js"],
-        "tsConfig": "apps/ui/shell/tsconfig.app.json",
+        "tsConfig": "apps/ui/mfe-document/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
           {
             "glob": "**/*",
-            "input": "apps/ui/shell/public"
+            "input": "apps/ui/mfe-document/public"
           }
         ],
-        "styles": ["apps/ui/shell/src/styles.scss"],
+        "styles": ["apps/ui/mfe-document/src/styles.scss"],
         "scripts": [],
         "customWebpackConfig": {
-          "path": "apps/ui/shell/webpack.config.ts"
+          "path": "apps/ui/mfe-document/webpack.config.ts"
         }
       },
       "configurations": {
@@ -44,7 +44,7 @@
           ],
           "outputHashing": "all",
           "customWebpackConfig": {
-            "path": "apps/ui/shell/webpack.prod.config.ts"
+            "path": "apps/ui/mfe-document/webpack.prod.config.ts"
           }
         },
         "development": {
@@ -59,17 +59,17 @@
       "defaultConfiguration": "production"
     },
     "serve": {
-      "executor": "@nx/angular:module-federation-dev-server",
+      "executor": "@nx/angular:dev-server",
       "options": {
-        "port": 4200,
-        "publicHost": "http://localhost:4200"
+        "port": 4202,
+        "publicHost": "http://localhost:4202"
       },
       "configurations": {
         "production": {
-          "buildTarget": "uiShell:build:production"
+          "buildTarget": "uiDoc:build:production"
         },
         "development": {
-          "buildTarget": "uiShell:build:development"
+          "buildTarget": "uiDoc:build:development"
         }
       },
       "defaultConfiguration": "development"
@@ -77,7 +77,7 @@
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "buildTarget": "uiShell:build"
+        "buildTarget": "uiDoc:build"
       }
     },
     "lint": {
@@ -87,15 +87,24 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "apps/ui/shell/jest.config.ts"
+        "jestConfig": "apps/ui/mfe-document/jest.config.ts"
       }
     },
     "serve-static": {
       "executor": "@nx/web:file-server",
+      "defaultConfiguration": "production",
       "options": {
-        "buildTarget": "uiShell:build",
-        "port": 4200,
-        "spa": true
+        "buildTarget": "uiDoc:build",
+        "port": 4202,
+        "watch": false
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "uiDoc:build:development"
+        },
+        "production": {
+          "buildTarget": "uiDoc:build:production"
+        }
       }
     }
   }

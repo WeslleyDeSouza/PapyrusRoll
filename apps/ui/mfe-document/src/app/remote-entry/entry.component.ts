@@ -4,7 +4,7 @@ import { NxWelcomeComponent } from './nx-welcome.component';
 
 @Component({
   imports: [CommonModule, NxWelcomeComponent],
-  selector: 'pyrl-uiAuth-entry',
+  selector: 'pyrl-uiDoc-entry',
   template: `<pyrl-nx-welcome></pyrl-nx-welcome>`,
 })
 export class RemoteEntryComponent {}
