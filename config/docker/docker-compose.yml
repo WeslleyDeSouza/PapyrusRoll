@@ -1,0 +1,15 @@
+version: "3.7"
+services:
+  pyrl-ms-rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: "pyrl-rabbitmq"
+    ports:
+      - 5672:5672
+      - 15672:15672
+    volumes:
+      - pyrl_rabbitmq:/var/lib/rabbitmq
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+volumes:
+  pyrl_rabbitmq:
+    driver: local

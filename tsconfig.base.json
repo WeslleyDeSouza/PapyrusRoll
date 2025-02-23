@@ -15,6 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@wes/api-auth": ["libs/api/auth/src/index.ts"],
+      "@wes/api-config": ["libs/api/config/src/index.ts"],
+      "@wes/api-core": ["libs/api/core/src/index.ts"],
       "@wes/auth": ["libs/ui/auth/src/index.ts"],
       "@wes/core": ["libs/ui/core/src/index.ts"],
       "uiAuth/Routes": [

@@ -42,5 +42,7 @@ Thumbs.db
 .nx/cache
 .nx/workspace-data
 
+#Generated
 .angular
 .graph
+/config/swagger/
