@@ -5,7 +5,6 @@ This repository is a showcase project for my portfolio and CV, demonstrating exp
 ![Banner](https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/The_judgement_of_the_dead_in_the_presence_of_Osiris.jpg/1000px-The_judgement_of_the_dead_in_the_presence_of_Osiris.jpg)
 
 ### Architecture
-Generated from Code:
 
 ```mermaid
 ---
