@@ -115,10 +115,19 @@ flowchart TD
 - config -> swagger (generated)
 
 ### Getting started
+
 Copy ``.env.example`` to `.env`
 
-Run Application:
+----
+
+Run specific Application:
 ``npx nx serve [APPNAME]``
+
+Run ui Applications:
+`` npx nx run-many -t=serve -p=ui*``
+
+Run api Applications:
+`` npx nx run-many -t=serve -p=api*``
 
 Run Docker:
 ``docker-compose -f ./config/docker/docker-compose.yml up``
