@@ -108,18 +108,39 @@ flowchart TD
 
 ```
 
-### Configurations
-#### Docker
-- config -> docker
-#### Swagger
-- config -> swagger (generated)
+### Entity - UML
 
-### Getting started
+```mermaid
+---
+title: Entities namespaces and relationships
+---
+classDiagram
+
+```
+----
+
+### Configurations
+| Category  | Path  |
+|-----------|-------|
+| **Env**   | `.env` |
+| **Docker** | `config/docker` |
+| **Swagger** | `config/swagger (generated)` |
+
+----
+
+### Preparation
 
 Copy ``.env.example`` to `.env`
 
 ----
+### Getting started
 
+**Docker:**
+
+Run Docker:
+``docker-compose -f ./config/docker/docker-compose.yml up``
+
+**Running:**
 Run specific Application:
 ``npx nx serve [APPNAME]``
 
@@ -129,5 +150,19 @@ Run ui Applications:
 Run api Applications:
 `` npx nx run-many -t=serve -p=api*``
 
-Run Docker:
-``docker-compose -f ./config/docker/docker-compose.yml up``
+**Test:**
+
+Run ui Tests:
+`` npx nx run-many -t=test -p=ui*``
+
+Run api Tests:
+`` npx nx run-many -t=test -p=api*``
+
+----
+
+### Tools
+
+| Name        | Path | Example              |
+|-------------|------|----------------------|
+| **swagger** | `tools/swagger.generator.js` | `npm run ng-swagger` |
+

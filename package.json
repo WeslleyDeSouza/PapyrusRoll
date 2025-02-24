@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "graph:build": "nx graph --groupByFolder --file=graph.json"
+    "graph:build": "nx graph --groupByFolder --file=graph.json",
+    "ng-swagger": "node tools/swagger.generator.js"
   },
   "private": true,
   "devDependencies": {
