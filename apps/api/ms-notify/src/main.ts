@@ -1,8 +1,3 @@
-/**
- * This is not a production server yet!
- * This is only a minimal backend to get started.
- */
-
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app/app.module';
 import { MicroserviceOptions } from '@nestjs/microservices';
@@ -16,7 +11,7 @@ import { Logger } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  const globalPrefix = 'api/email';
+  const globalPrefix = 'api/notify';
   const port = 3003;
 
   app.enableVersioning(API_CONFIG_ENDPOINT_VERSIONING.defaultHttpVersion);
@@ -26,7 +21,9 @@ async function bootstrap() {
   API_SWAGGER_UTILS.swaggerBuilder(app, 'ms-notify');
 
   // MS
-  app.connectMicroservice<MicroserviceOptions>(API_CONFIG_MS_CONNECTION.NOTIFY);
+  app.connectMicroservice<MicroserviceOptions>(
+    API_CONFIG_MS_CONNECTION.NOTIFY.transport
+  );
 
   await app.listen(process.env.PORT ?? port);
   await app.startAllMicroservices();
