@@ -108,6 +108,17 @@ flowchart TD
 
 ```
 
-### Getting started
+### Configurations
+#### Docker
+- config -> docker
+#### Swagger
+- config -> swagger (generated)
 
-``npx nx serve uiShell``
+### Getting started
+Copy ``.env.example`` to `.env`
+
+Run Application:
+``npx nx serve [APPNAME]``
+
+Run Docker:
+``docker-compose -f ./config/docker/docker-compose.yml up``
