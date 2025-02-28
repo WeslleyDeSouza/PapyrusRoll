@@ -10,11 +10,12 @@ export class AuthJtwRefreshTokenStrategy extends PassportStrategy(
 ) {
   constructor() {
     super({
-      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-      secretOrKey:
-        process.env['APP_' + process.env['APP_NAME'] + '_SECRET'] ||
-        process.env['APP_SECRET'],
       passReqToCallback: true,
+      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+      secretOrKey: <string>(
+        (process.env['APP_' + process.env['APP_NAME'] + '_SECRET'] ||
+          process.env['APP_SECRET'])
+      ),
     });
   }
 
@@ -23,6 +24,7 @@ export class AuthJtwRefreshTokenStrategy extends PassportStrategy(
       .get('Authorization')
       ?.replace('Bearer', '')
       ?.trim();
+
     return { ...payload, refreshToken };
   }
 }

@@ -8,9 +8,10 @@ import { IAuthJtwPayload } from './auth.jtw.interface';
 export class AuthJtwStrategy extends PassportStrategy(Strategy, 'jwt') {
   constructor(private jwtService: JwtService) {
     super({
-      secretOrKey:
-        process.env['APP_' + process.env['APP_NAME'] + '_SECRET'] ||
-        process.env['APP_SECRET'],
+      secretOrKey: <string>(
+        (process.env['APP_' + process.env['APP_NAME'] + '_SECRET'] ||
+          process.env['APP_SECRET'])
+      ),
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
     });
   }
